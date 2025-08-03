@@ -1,3 +1,20 @@
+# IDE files from JetBrains (Android Studio, IntelliJ)
 .idea/
-build/
+*.iml
+
+# Build output
+/build/
+/out/
+/target/
+
+# Gradle files
+.gradle/
+gradle-wrapper.jar
+
+# VSCode files
 .vscode/
+
+# Other
+*.class
+*.log
+*.jar
