@@ -16,5 +16,5 @@ message Response {
 }
 
 service CalculatorService {
-  rpc getStatistics(stream Request) returns (stream Response);
+  rpc getStatistics(stream Request) returns ( Response);
 }
