@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>grpc-server</artifactId>
+    <artifactId>server</artifactId>
 
     <properties>
         <grpc.version>1.63.0</grpc.version>

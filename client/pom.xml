@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>grpc-client</artifactId>
+    <artifactId>client</artifactId>
 
     <properties>
         <grpc.version>1.63.0</grpc.version>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>${grpc.version}</version>
+            <version>1.71.0</version>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
