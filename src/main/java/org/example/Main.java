@@ -2,9 +2,9 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.printf("Hello and welcome!\n");
+        System.out.printf("Hello from GRPC!\n");
 
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= 11; i++) {
             System.out.println("i = " + i);
         }
     }
