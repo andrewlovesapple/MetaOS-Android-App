@@ -13,4 +13,4 @@ RUN mvn clean compile -pl server
 
 EXPOSE 8080
 
-CMD ["mvn", "exec:java", "-pl", "server", "-Dexec.mainClass=org.example.CalculatorServer"]
+CMD ["mvn", "exec:java", "-pl", "server", "-Dexec.mainClass=org.example.MultiplierServer"]

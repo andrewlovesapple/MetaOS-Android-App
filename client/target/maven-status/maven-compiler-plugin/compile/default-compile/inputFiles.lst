@@ -1,3 +1,3 @@
-C:\Users\ROG\OneDrive\Documents\Andrew\Java\MetaOS-Android-App\client\src\main\java\org\example\CalculatorClient.java
-C:\Users\ROG\OneDrive\Documents\Andrew\Java\MetaOS-Android-App\client\target\generated-sources\protobuf\grpc-java\com\example\calculator\CalculatorServiceGrpc.java
-C:\Users\ROG\OneDrive\Documents\Andrew\Java\MetaOS-Android-App\client\target\generated-sources\protobuf\java\com\example\calculator\Calculator.java
+/Users/andrejmitlickij/Java Projects/metaos-android-app/client/src/main/java/org/example/MultiplierClient.java
+/Users/andrejmitlickij/Java Projects/metaos-android-app/client/target/generated-sources/protobuf/grpc-java/com/example/calculator/MultiplierServiceGrpc.java
+/Users/andrejmitlickij/Java Projects/metaos-android-app/client/target/generated-sources/protobuf/java/com/example/calculator/Multiplier.java

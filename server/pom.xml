@@ -77,7 +77,7 @@
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <mainClass>org.example.CalculatorServer</mainClass>
+                            <mainClass>org.example.MultiplierServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -97,7 +97,7 @@
                             <shadedArtifactAttached>false</shadedArtifactAttached>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.example.CalculatorServer</mainClass>
+                                    <mainClass>org.example.MultiplierServer</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

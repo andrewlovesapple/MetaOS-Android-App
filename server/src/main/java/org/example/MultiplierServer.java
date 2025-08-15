@@ -5,10 +5,10 @@ import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
-public class CalculatorServer {
+public class MultiplierServer {
     public static void main(String[] args) throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(8080)
-                .addService(new CalculatorImplementation())
+                .addService(new MultiplierImpl())
                 .build();
 
         server.start();
