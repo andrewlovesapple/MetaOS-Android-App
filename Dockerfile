@@ -1,16 +1,16 @@
-FROM openjdk:24-jdk-slim
+FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y maven
 
 COPY pom.xml .
-COPY server/ server/
-COPY client/ client/
+COPY src/ src/
 COPY proto/ proto/
 
-RUN mvn clean compile -pl server
+RUN mvn clean package
 
-EXPOSE 8080
+ENV GRPC_SERVER_HOST=metaos-dev-container
+ENV GRPC_SERVER_PORT=50051
 
-CMD ["mvn", "exec:java", "-pl", "server", "-Dexec.mainClass=org.example.MultiplierServer"]
+CMD ["java", "-jar", "target/metaos-client-1.0-SNAPSHOT.jar"]
