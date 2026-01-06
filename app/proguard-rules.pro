@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# gRPC and Protobuf Rules
+-keep class io.grpc.** { *; }
+-keep class com.google.protobuf.** { *; }
+-keep class com.google.common.** { *; }
+-keep class javax.annotation.** { *; }
+
+# Keep your generated Proto classes
+-keep class MetaOS.** { *; }
+-keep interface MetaOS.** { *; }
