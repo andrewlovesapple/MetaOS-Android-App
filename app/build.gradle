@@ -66,3 +66,32 @@ dependencies {
     implementation libs.grpc.stub
     implementation libs.javax.annotation
 }
+
+tasks.register('updateProtos') {
+    doLast {
+        def repoUrl = "https://raw.githubusercontent.com/RPC-AR-X/AR-S/main/protocols/grpc/agent/"
+
+        def sourceFileName = "agent.proto"
+        def sourceUrl = "${repoUrl}${sourceFileName}"
+
+        def localFileName = "agent_service.proto"
+        def destinationDir = file("src/main/proto/Agent")
+
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs()
+        }
+
+        def destinationFile = new File(destinationDir, localFileName)
+
+        try {
+            def protoContent = new URL(sourceUrl).getText()
+            destinationFile.write(protoContent)
+            println("Success! Saved to ${destinationFile.absolutePath}")
+        } catch (Exception e) {
+            println "ERROR: Failed to download proto file."
+            throw e
+        }
+    }
+}
+
+preBuild.dependsOn updateProtos

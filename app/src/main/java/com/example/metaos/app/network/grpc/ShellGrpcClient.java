@@ -6,8 +6,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import MetaOS.ShellControllerServiceGrpc;
-import MetaOS.System;
+import Agent.AgentService.ExecuteShellRequest;
+import Agent.AgentService.ExecuteShellResponse;
+import Agent.ShellControllerServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
@@ -22,7 +23,7 @@ public class ShellGrpcClient {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor(); //Background thread for network operations
 
-    private StreamObserver<System.ExecuteShellRequest> requestObserver;
+    private StreamObserver<ExecuteShellRequest> requestObserver;
 
 
     public void connect(String host, int port, ShellOutputListener listener) {
@@ -38,10 +39,10 @@ public class ShellGrpcClient {
 
 
         //Incoming data handler
-        StreamObserver<System.ExecuteShellResponse> responseObserver = new StreamObserver<System.ExecuteShellResponse>() {
+        StreamObserver<ExecuteShellResponse> responseObserver = new StreamObserver<ExecuteShellResponse>() {
 
             @Override
-            public void onNext(System.ExecuteShellResponse value) {
+            public void onNext(ExecuteShellResponse value) {
                 listener.onOutput(value.getOutput());
             }
 
@@ -71,7 +72,7 @@ public class ShellGrpcClient {
             Log.d(TAG, "Sending command: " + command);
 
             //Building Protobuf message
-            System.ExecuteShellRequest request = System.ExecuteShellRequest.newBuilder()
+            ExecuteShellRequest request = ExecuteShellRequest.newBuilder()
                     .setCommand(command)
                     .build();
 

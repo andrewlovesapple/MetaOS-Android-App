@@ -1,7 +1,7 @@
 package com.example.metaos.app.model;
 
 public enum ConnectionState{
-    IDLE,
+    INACTIVE,
     CONNECTING,
     CONNECTED,
     RECONNECTING,

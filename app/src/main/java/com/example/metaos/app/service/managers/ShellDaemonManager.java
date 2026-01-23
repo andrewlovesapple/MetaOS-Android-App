@@ -16,7 +16,7 @@ public class ShellDaemonManager implements ShellGrpcClient.ShellOutputListener {
 
     private final ShellGrpcClient grpcClient;
 
-    private final MutableLiveData<ConnectionState> connectionState = new MutableLiveData<>(ConnectionState.IDLE);
+    private final MutableLiveData<ConnectionState> connectionState = new MutableLiveData<>(ConnectionState.INACTIVE);
     private final MutableLiveData<String> commandOutput = new MutableLiveData<>();
 
     private Handler mainHandler = new Handler(Looper.getMainLooper()); //Threading bridge
@@ -59,7 +59,7 @@ public class ShellDaemonManager implements ShellGrpcClient.ShellOutputListener {
     public void disconnect() {
         explicitDisconnect = true;
         grpcClient.shutdown();
-        updateState(ConnectionState.IDLE);
+        updateState(ConnectionState.INACTIVE);
     }
 
     @Override
