@@ -75,7 +75,6 @@ public class ShellRepository {
             metaService = localBinder.getService();
             isBound = true;
 
-
             ShellDaemonManager manager = metaService.getShellDaemonManager();
 
             manager.getState().observeForever(state -> {
