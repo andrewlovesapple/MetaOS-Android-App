@@ -18,3 +18,12 @@ gradle-wrapper.jar
 *.class
 *.log
 *.jar
+
+# Security and Local settings
+local.properties
+.DS_Store
+
+# Android specific
+/captures
+.externalNativeBuild
+.cxx

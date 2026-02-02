@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/text_connection_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connecting..."
+        android:textColor="#E5E9F0"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/indicator_status"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="8dp"
+        android:background="#BF616A"
+        app:layout_constraintBottom_toBottomOf="@id/text_connection_status"
+        app:layout_constraintStart_toEndOf="@id/text_connection_status"
+        app:layout_constraintTop_toTopOf="@id/text_connection_status" />
+
+    <ScrollView
+        android:id="@+id/scroll_console"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#802E3440"
+        android:fillViewport="true"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/input_command"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_connection_status">
+
+
+        <TextView
+            android:id="@+id/text_console_output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Welcome to MetaOS Shell!\n"
+            android:textColor="#A3BE8C"
+            android:textSize="16sp" />
+
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/input_command"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="#33ECEFF4"
+        android:fontFamily="monospace"
+        android:hint="Enter shell prompt here..."
+        android:imeOptions="actionSend"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#ECEFF4"
+        android:textColorHint="#D8DEE9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

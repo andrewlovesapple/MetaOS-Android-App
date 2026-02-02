@@ -1,0 +1,97 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.protobuf)
+}
+
+android {
+    namespace 'com.example.metaos.app'
+    compileSdkVersion 35
+
+    defaultConfig {
+        applicationId "com.example.metaos.app"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "GRPC_HOST", "\"10.0.2.2\""
+        buildConfigField "int", "GRPC_PORT", "50051"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/INDEX.LIST', 'META-INF/io.netty.versions.properties']
+        }
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${libs.versions.protobuf.get()}"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${libs.versions.grpc.get()}"
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java { option 'lite' }
+            }
+            task.plugins {
+                grpc { option 'lite' }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation libs.lifecycle.viewmodel
+    implementation libs.lifecycle.livedata
+    implementation libs.grpc.okhttp
+    implementation libs.grpc.protobuf.lite
+    implementation libs.grpc.stub
+    implementation libs.javax.annotation
+}
+
+tasks.register('updateProtos') {
+    doLast {
+        def repoUrl = "https://raw.githubusercontent.com/RPC-AR-X/AR-S/main/protocols/grpc/agent/"
+
+        def sourceFileName = "agent.proto"
+        def sourceUrl = "${repoUrl}${sourceFileName}"
+
+        def localFileName = "agent_service.proto"
+        def destinationDir = file("src/main/proto/Agent")
+
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs()
+        }
+
+        def destinationFile = new File(destinationDir, localFileName)
+
+        try {
+            def protoContent = new URL(sourceUrl).getText()
+            destinationFile.write(protoContent)
+            println("Success! Saved to ${destinationFile.absolutePath}")
+        } catch (Exception e) {
+            println "ERROR: Failed to download proto file."
+            throw e
+        }
+    }
+}
+
+preBuild.dependsOn updateProtos
